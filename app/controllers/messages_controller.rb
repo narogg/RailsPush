@@ -27,6 +27,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
 	logger.error(@message.msg)
+	logger.error(@message.title)
     respond_to do |format|
       if @message.save
         format.html { redirect_to messages_url, notice: 'Message was successfully pushed.' }
@@ -45,7 +46,7 @@ class MessagesController < ApplicationController
 
 	registration_ids= ["APA91bHjCkyrdoubBFEOBkwqNoCCAIRgdLKBuqnLOEvwYV1BFtKHcaIAy3sCAIpxyAYO-f-S5E2W4d13fw9fGdTTxMiDxUrgt668N3T1gq4-agdPz-u5ISRFB84OqdhXQIUjaHKzuvx3MrmK-6A83F217BsP5mO0-Q"]
 	response = gcm.send(registration_ids, options)
-	#logger.error(registration_ids)
+	logger.error(@message.title)
 	
   end
 
