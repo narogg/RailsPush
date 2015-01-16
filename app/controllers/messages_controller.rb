@@ -1,4 +1,3 @@
-require 'gcm'
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
@@ -39,8 +38,7 @@ class MessagesController < ApplicationController
     end
 	
 		
-	# Here we will send the notification to GCM using 'gcm' gem
-	#require 'gcm'
+	# Here we will send the notification to GCM using 'gcm' gem	
 	gcm = GCM.new("AIzaSyC8Evhuc9gSgjWH_ilGsOlNikA4iGOnRVM")
 	options = {data: {message: @message.msg, title: @message.title}, collapse_key: "updated_score"}
 
