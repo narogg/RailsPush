@@ -26,7 +26,7 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(message_params)
-		
+	logger.error(@message.msg)
     respond_to do |format|
       if @message.save
         format.html { redirect_to messages_url, notice: 'Message was successfully pushed.' }
@@ -41,7 +41,7 @@ class MessagesController < ApplicationController
 	# Here we will send the notification to GCM using 'gcm' gem
 	#require 'gcm'
 	gcm = GCM.new("AIzaSyC8Evhuc9gSgjWH_ilGsOlNikA4iGOnRVM")
-	options = {data: {message: @message, title: "Locarda"}, collapse_key: "updated_score"}
+	options = {data: {message: @message.msg, title: "Locarda"}, collapse_key: "updated_score"}
 
 	registration_ids= ["APA91bHjCkyrdoubBFEOBkwqNoCCAIRgdLKBuqnLOEvwYV1BFtKHcaIAy3sCAIpxyAYO-f-S5E2W4d13fw9fGdTTxMiDxUrgt668N3T1gq4-agdPz-u5ISRFB84OqdhXQIUjaHKzuvx3MrmK-6A83F217BsP5mO0-Q"]
 	response = gcm.send(registration_ids, options)
