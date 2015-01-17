@@ -40,11 +40,12 @@ class MessagesController < ApplicationController
 		
 	# Here we will send the notification to GCM using 'gcm' gem	
 	gcm = GCM.new("AIzaSyC8Evhuc9gSgjWH_ilGsOlNikA4iGOnRVM")
-	options = {data: {message: @message.msg, title: @message.title}, collapse_key: "updated_score"}
+	options = {data: {message: @message.msg, title: @message.title, notId: rand(1...10000)}, collapse_key: "updated_score"}
 
 	registration_ids= ["APA91bHjCkyrdoubBFEOBkwqNoCCAIRgdLKBuqnLOEvwYV1BFtKHcaIAy3sCAIpxyAYO-f-S5E2W4d13fw9fGdTTxMiDxUrgt668N3T1gq4-agdPz-u5ISRFB84OqdhXQIUjaHKzuvx3MrmK-6A83F217BsP5mO0-Q"]
 	response = gcm.send(registration_ids, options)
 	logger.error(@message.title)
+	logger.error(options)
 	
   end
 
