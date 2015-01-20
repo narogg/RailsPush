@@ -40,7 +40,7 @@ class MessagesController < ApplicationController
 		
 	# Here we will send the notification to GCM using 'gcm' gem	
 	gcm = GCM.new("AIzaSyC8Evhuc9gSgjWH_ilGsOlNikA4iGOnRVM")
-	options = {data: {title: @message.title, message: @message.msg, notId: rand(1...10000)}, collapse_key: "updated_score", title: @message.title}
+	options = {data: {title: @message.title, message: @message.msg, notId: rand(1...10000)}, nekaj: "Something", collapse_key: "updated_score", title: @message.title}
     
 	# Mia's regID ,"APA91bEF0a8mhY48HvQ-bqG9YnVR0ELtNCSYff9tNoMjzCRd-dM245tcsb-tx9g6jNtwyA5ZqjqvJBS9cNOhuBCNMNyum_ChaVmDCT88Wn0JXeY0w9LpGbG3B-5M_dHz-NZy8ePIvgdau4RcTmbG5q93cCx0EjqtHQ"
 	registration_ids = ["APA91bHjCkyrdoubBFEOBkwqNoCCAIRgdLKBuqnLOEvwYV1BFtKHcaIAy3sCAIpxyAYO-f-S5E2W4d13fw9fGdTTxMiDxUrgt668N3T1gq4-agdPz-u5ISRFB84OqdhXQIUjaHKzuvx3MrmK-6A83F217BsP5mO0-Q"]
